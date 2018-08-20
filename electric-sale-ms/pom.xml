@@ -15,9 +15,31 @@
     <dependencies>
         <dependency>
             <groupId>cn.org.upthink</groupId>
-            <artifactId>elec-platform-common</artifactId>
+            <artifactId>elec-base-web</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>cn.org.upthink</groupId>
+            <artifactId>elec-persistence-jpa</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.org.upthink</groupId>
+            <artifactId>elec-persistence-mybatis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.org.upthink</groupId>
+            <artifactId>elec-codeGen</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.org.upthink</groupId>
+            <artifactId>elec-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

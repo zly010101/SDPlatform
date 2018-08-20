@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.elec.ncdp</groupId>
+    <groupId>cn.org.upthink</groupId>
     <artifactId>elec-codeGen</artifactId>
     <name>elec-codeGen</name>
     <packaging>jar</packaging>
