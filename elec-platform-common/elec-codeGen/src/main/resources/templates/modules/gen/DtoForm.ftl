@@ -3,7 +3,10 @@ package ${dto.basePackage};
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @ApiModel(value="${dto.entitySimpleName}对象", description="")
 public class ${dto.entitySimpleName}FormDTO implements Serializable {
 

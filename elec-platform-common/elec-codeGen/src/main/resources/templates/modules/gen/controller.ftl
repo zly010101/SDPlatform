@@ -1,8 +1,8 @@
 package ${controller.basePackage};
 
-import com.kangmei.persistence.mybatis.dto.Page;
-import com.kangmei.base.web.BaseController;
-import com.kangmei.common.dto.BaseResult;
+import cn.org.upthink.persistence.mybatis.dto.Page;
+import cn.org.upthink.web.BaseController;
+import cn.org.upthink.common.dto.BaseResult;
 import ${controller.entityTypeName};
 import ${service.basePackage}.${controller.entitySimpleName}Service;
 
@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-//import com.kangmei.frame.modules.sys.utils.UserUtils;
+//import cn.org.upthink.frame.modules.sys.utils.UserUtils;
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 //import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;

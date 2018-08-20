@@ -1,9 +1,9 @@
 package ${service.basePackage};
 
-import com.kangmei.persistence.mybatis.dto.Page;
-import com.kangmei.persistence.mybatis.service.BaseCrudService;
-import com.kangmei.persistence.mybatis.util.StringUtils;
-//import com.kangmei.frame.modules.sys.utils.UserUtils;
+import cn.org.upthink.persistence.mybatis.dto.Page;
+import cn.org.upthink.persistence.mybatis.service.BaseCrudService;
+import cn.org.upthink.persistence.mybatis.util.StringUtils;
+//import cn.org.upthink.frame.modules.sys.utils.UserUtils;
 import ${mapper.basePackage}.${service.entitySimpleName}Mapper;
 import ${service.entityTypeName};
 import org.springframework.beans.factory.annotation.Autowired;
