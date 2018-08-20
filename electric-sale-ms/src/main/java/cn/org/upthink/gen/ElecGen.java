@@ -1,15 +1,10 @@
-package cn.org.upthink.test;
+package cn.org.upthink.gen;
 
-import cn.org.upthink.gen.JpaEntityFreeMarkerGenerator;
+import cn.org.upthink.test.WxActivityTime;
 
-/**
- * run it !!!
- */
-public class TestMain {
-    //<--
-    public static void main(String[] args){
+public class ElecGen {
+    public static void main(String[] args) {
         JpaEntityFreeMarkerGenerator fmGenerator = new JpaEntityFreeMarkerGenerator();
         fmGenerator.generate(WxActivityTime.class, "/Users/meishukai/gitProject/gen", true);
     }
-
 }

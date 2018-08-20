@@ -17,33 +17,12 @@ public class WxActivityTime extends BaseDataEntity<WxActivityTime> {
 //    @TableField(name="id")
 //    private String id;
 
-    @TableField(name="act_id")
+    @TableField(name="act_id",remark = "测试id", required = false,isQuery = false)
     private String actId;
 
-    @TableField(name="act_name")
+    @TableField(name="act_name",remark = "测试id", required = false,isQuery = false)
     private String actName;
 
-    @TableField(name="act_day_cash")
-    private String actDayCash;
-
-    @TableField(name="name")
-    private String name;
-
-    @TableField(name="remark")
-    private String remark;
-
-    @TableField(name="wishing")
-    private String wishing;
-
-    /**该时间段的金额*/
-    @TableField(name="cash")
-    private BigDecimal cash;
-
-    @TableField(name="start_time")
-    private Date startTime;
-
-    @TableField(name="end_time")
-    private Date endTime;
 
     /**用于查询的参数: yyyy-MM-dd HH:mm:ss*/
     private String checkTime;
@@ -70,69 +49,5 @@ public class WxActivityTime extends BaseDataEntity<WxActivityTime> {
 
     public void setActName(String actName) {
         this.actName = actName;
-    }
-
-    public String getActDayCash() {
-        return actDayCash;
-    }
-
-    public void setActDayCash(String actDayCash) {
-        this.actDayCash = actDayCash;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getWishing() {
-        return wishing;
-    }
-
-    public void setWishing(String wishing) {
-        this.wishing = wishing;
-    }
-
-    public BigDecimal getCash() {
-        return cash;
-    }
-
-    public void setCash(BigDecimal cash) {
-        this.cash = cash;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getCheckTime() {
-        return checkTime;
-    }
-
-    public void setCheckTime(String checkTime) {
-        this.checkTime = checkTime;
     }
 }
