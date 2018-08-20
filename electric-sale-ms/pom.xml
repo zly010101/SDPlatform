@@ -20,11 +20,6 @@
         </dependency>
         <dependency>
             <groupId>cn.org.upthink</groupId>
-            <artifactId>elec-persistence-jpa</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.org.upthink</groupId>
             <artifactId>elec-persistence-mybatis</artifactId>
             <version>1.0.0</version>
         </dependency>

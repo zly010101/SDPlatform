@@ -50,12 +50,12 @@
 
     <!-- 类型别名 -->
     <typeAliases>
-        <typeAlias alias="Page" type="com.kangmei.persistence.mybatis.dto.Page"/><!--分页  -->
+        <typeAlias alias="Page" type="cn.org.upthink.persistence.mybatis.dto.Page"/><!--分页  -->
     </typeAliases>
 
     <!-- 插件配置 -->
     <plugins>
-        <plugin interceptor="com.kangmei.persistence.mybatis.interceptor.PaginationInterceptor"/>
+        <plugin interceptor="cn.org.upthink.persistence.mybatis.interceptor.PaginationInterceptor"/>
     </plugins>
 
 </configuration>
