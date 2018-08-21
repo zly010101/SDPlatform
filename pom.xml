@@ -62,6 +62,8 @@
         <freemarker.version>2.3.28</freemarker.version>
         <junit.version>4.12</junit.version>
         <asynchttpclient.version>2.4.9</asynchttpclient.version>
+        <qiniu-java-sdk.version>[7.0.0, 7.2.99]</qiniu-java-sdk.version>
+
 
     </properties>
 

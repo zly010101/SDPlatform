@@ -131,6 +131,15 @@
                 </exclusion>
             </exclusions>
         </dependency>-->
+
+
+
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>${qiniu-java-sdk.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <resources>
