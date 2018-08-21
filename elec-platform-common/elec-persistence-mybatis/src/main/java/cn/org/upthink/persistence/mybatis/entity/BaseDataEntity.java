@@ -4,6 +4,7 @@ import cn.org.upthink.persistence.mybatis.util.IdGen;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.time.OffsetTime;
 import java.util.Date;
 
 /**
@@ -36,7 +37,7 @@ public abstract class BaseDataEntity<T> extends BaseEntity<T> {
 	public void preInsert(){
 		// 不限制ID为UUID，调用setIsNewRecord()使用自定义ID
 		if (!this.isNewRecord){
-			setId(IdGen.uuid());
+			initId();
 		}
 //		User user = UserUtils.getUser();
 //		if (StringUtils.isNotBlank(user.getId())){
@@ -46,7 +47,12 @@ public abstract class BaseDataEntity<T> extends BaseEntity<T> {
 		this.updateDate = new Date();
 		this.createDate = this.updateDate;
 	}
-	
+
+	private void initId(){
+		//使用时间戳转换16进制作为编码
+		long currentTimeMillis = System.currentTimeMillis();
+		setId(Long.toHexString(currentTimeMillis));
+	}
 	/**
 	 * 更新之前执行方法，需要手动调用
 	 */
