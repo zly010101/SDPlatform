@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.org.upthink.mapper.WxActivityTimeMapper">
+<mapper namespace="cn.org.upthink.mapper.LoopImgMapper">
 
-    <sql id="wxActivityTimeDaoColumns">
-        <!--a.id AS "id",
+    <sql id="loopImgDaoColumns">
+        a.id AS "id",
         a.create_by AS "createBy.id",
         a.create_date AS "createDate",
         a.update_by AS "updateBy.id",
         a.update_date AS "updateDate",
         a.remarks AS "remarks",
-        a.del_flag AS "delFlag",-->
-		a.ACT_ID AS "actId",
-		a.ACT_NAME AS "actName"
+        a.del_flag AS "delFlag",
+		a.LOOP_URL AS "loopUrl",
+		a.LOOP_TYPE AS "loopType",
+		a.LOOP_NAME AS "loopName"
     </sql>
 
-    <sql id="wxActivityTimeJoins">
+    <sql id="loopImgJoins">
         <!--todo-->
     </sql>
 
-    <select id="get" resultType="cn.org.upthink.test.WxActivityTime">
+    <select id="get" resultType="cn.org.upthink.entity.LoopImg">
         SELECT
-        <include refid="wxActivityTimeDaoColumns"/>
-        FROM tb_wxActivityTime a
+        <include refid="loopImgDaoColumns"/>
+        FROM tb_loopImg a
         WHERE a.id = #{id}
     </select>
 
-    <select id="find" resultType="cn.org.upthink.test.WxActivityTime">
+    <select id="find" resultType="cn.org.upthink.entity.LoopImg">
         SELECT
-        <include refid="wxActivityTimeDaoColumns"/>
-        FROM tb_wxActivityTime a
+        <include refid="loopImgDaoColumns"/>
+        FROM tb_loopImg a
         <where>
             a.del_flag = #{DEL_FLAG_NORMAL}
         </where>
@@ -42,23 +43,32 @@
         </choose>
     </select>
 
-    <select id="findList" resultType="cn.org.upthink.test.WxActivityTime">
+    <select id="findList" resultType="cn.org.upthink.entity.LoopImg">
         SELECT
-        <include refid="wxActivityTimeDaoColumns"/>
-        FROM tb_wxActivityTime a
+        <include refid="loopImgDaoColumns"/>
+        FROM tb_loopImg a
         <where>
             a.del_flag = #{delFlag}
             <!--<if test="name != null and name != ''">
                 AND a.name LIKE
                 <if test="dbName == 'mysql'">CONCAT('%', #{name}, '%')</if>
             </if>-->
+             <if test="loopUrl != null and loopUrl != ''">
+                AND a.LOOP_URL LIKE CONCAT('%', #{loopUrl}, '%')
+             </if>
+             <if test="loopType != null and loopType != ''">
+                AND a.LOOP_TYPE LIKE CONCAT('%', #{loopType}, '%')
+             </if>
+             <if test="loopName != null and loopName != ''">
+                AND a.LOOP_NAME LIKE CONCAT('%', #{loopName}, '%')
+             </if>
 		${sqlMap.dsf}
         </where>
         ORDER BY a.update_date DESC
     </select>
 
     <insert id="insert">
-        INSERT INTO tb_wxActivityTime(
+        INSERT INTO tb_loopImg(
 			<!--id,
 			create_by,
 			create_date,
@@ -66,8 +76,9 @@
 			update_date,
 			remarks,
 			del_flag,-->
-			ACT_ID,
-			ACT_NAME
+			LOOP_URL,
+			LOOP_TYPE,
+			LOOP_NAME
         ) VALUES (
 			<!--#{id},
 			#{createBy.id},
@@ -76,22 +87,24 @@
 			#{updateDate},
 			#{remarks},
 			#{delFlag},-->
-		    #{actId},
-		    #{actName}
+		    #{loopUrl},
+		    #{loopType},
+		    #{loopName}
         )
     </insert>
 
     <update id="update">
-        UPDATE tb_wxActivityTime
+        UPDATE tb_loopImg
         <trim prefix="SET" suffixOverrides=",">
-		   <if test="actId!=null">ACT_ID = #{actId},</if>
-		   <if test="actName!=null">ACT_NAME = #{actName},</if>
+		   <if test="loopUrl!=null">LOOP_URL = #{loopUrl},</if>
+		   <if test="loopType!=null">LOOP_TYPE = #{loopType},</if>
+		   <if test="loopName!=null">LOOP_NAME = #{loopName},</if>
 		</trim>
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE tb_wxActivityTime SET del_flag = #{DEL_FLAG_DELETE} WHERE id = #{id}
+        UPDATE tb_loopImg SET del_flag = #{DEL_FLAG_DELETE} WHERE id = #{id}
     </update>
 
 </mapper>

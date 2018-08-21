@@ -4,8 +4,8 @@ import cn.org.upthink.persistence.mybatis.dto.Page;
 import cn.org.upthink.web.BaseController;
 import cn.org.upthink.common.dto.BaseResult;
 import ${controller.entityTypeName};
-import ${dto.basePackage}.${controller.entitySimpleName}FormDTO;
-import ${dto.basePackage}.${controller.entitySimpleName}QueryDTO;
+import ${dto.basePackage}.model.${controller.entitySimpleName}FormDTO;
+import ${dto.basePackage}.model.${controller.entitySimpleName}QueryDTO;
 import ${service.basePackage}.${controller.entitySimpleName}Service;
 
 import io.swagger.annotations.Api;
