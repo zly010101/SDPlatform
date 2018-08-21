@@ -1,6 +1,8 @@
 package cn.org.upthink.model.type;
 
 
+import com.alibaba.druid.proxy.jdbc.JdbcParameter;
+import com.google.common.base.Preconditions;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,5 +17,16 @@ public enum LoopTypeEnum {
     LoopTypeEnum(int type, String typeMsg) {
         this.type = type;
         this.typeMsg = typeMsg;
+    }
+
+    public static LoopTypeEnum getSelf(Integer loopType) {
+
+        Preconditions.checkNotNull(loopType,"无效的loopType");
+        for (LoopTypeEnum typeEnum : LoopTypeEnum.values()) {
+            if(typeEnum.type == loopType){
+                return typeEnum;
+            }
+        }
+        throw new IllegalArgumentException("无效的loopType");
     }
 }

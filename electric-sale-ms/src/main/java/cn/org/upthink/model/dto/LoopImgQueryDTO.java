@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ApiModel(value="LoopImg对象", description="")
-public class LoopImgQueryDTO implements Serializable {
+public class LoopImgQueryDTO extends BaseQueryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

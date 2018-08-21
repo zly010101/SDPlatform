@@ -4,9 +4,7 @@
 
     <sql id="loopImgDaoColumns">
         a.id AS "id",
-        a.create_by AS "createBy.id",
         a.create_date AS "createDate",
-        a.update_by AS "updateBy.id",
         a.update_date AS "updateDate",
         a.remarks AS "remarks",
         a.del_flag AS "delFlag",
@@ -22,31 +20,14 @@
     <select id="get" resultType="cn.org.upthink.entity.LoopImg">
         SELECT
         <include refid="loopImgDaoColumns"/>
-        FROM tb_loopImg a
-        WHERE a.id = #{id}
-    </select>
-
-    <select id="find" resultType="cn.org.upthink.entity.LoopImg">
-        SELECT
-        <include refid="loopImgDaoColumns"/>
-        FROM tb_loopImg a
-        <where>
-            a.del_flag = #{DEL_FLAG_NORMAL}
-        </where>
-        <choose>
-            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
-                ORDER BY ${page.orderBy}
-            </when>
-            <otherwise>
-                ORDER BY a.update_date DESC
-            </otherwise>
-        </choose>
+        FROM tb_loop_img a
+        WHERE a.id = #{id} and del_flag = #{cn.org.upthink.persistence.mybatis.entity.BaseEntity@DEL_FLAG_NORMAL}
     </select>
 
     <select id="findList" resultType="cn.org.upthink.entity.LoopImg">
         SELECT
         <include refid="loopImgDaoColumns"/>
-        FROM tb_loopImg a
+        FROM tb_loop_img a
         <where>
             a.del_flag = #{delFlag}
             <!--<if test="name != null and name != ''">
@@ -62,31 +43,28 @@
              <if test="loopName != null and loopName != ''">
                 AND a.LOOP_NAME LIKE CONCAT('%', #{loopName}, '%')
              </if>
+
 		${sqlMap.dsf}
         </where>
         ORDER BY a.update_date DESC
     </select>
 
     <insert id="insert">
-        INSERT INTO tb_loopImg(
-			<!--id,
-			create_by,
+        INSERT INTO tb_loop_img(
+			id,
 			create_date,
-			update_by,
 			update_date,
 			remarks,
-			del_flag,-->
+			del_flag,
 			LOOP_URL,
 			LOOP_TYPE,
 			LOOP_NAME
         ) VALUES (
-			<!--#{id},
-			#{createBy.id},
+			#{id},
 			#{createDate},
-			#{updateBy.id},
 			#{updateDate},
 			#{remarks},
-			#{delFlag},-->
+			#{delFlag},
 		    #{loopUrl},
 		    #{loopType},
 		    #{loopName}
@@ -94,17 +72,17 @@
     </insert>
 
     <update id="update">
-        UPDATE tb_loopImg
+        UPDATE tb_loop_img
         <trim prefix="SET" suffixOverrides=",">
-		   <if test="loopUrl!=null">LOOP_URL = #{loopUrl},</if>
-		   <if test="loopType!=null">LOOP_TYPE = #{loopType},</if>
-		   <if test="loopName!=null">LOOP_NAME = #{loopName},</if>
+		   <if test="loopUrl!=null and loopUrl != ''">LOOP_URL = #{loopUrl},</if>
+		   <if test="loopType!=null and loopType != -1">LOOP_TYPE = #{loopType},</if>
+		   <if test="loopName!=null and loopName !=''">LOOP_NAME = #{loopName},</if>
 		</trim>
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE tb_loopImg SET del_flag = #{DEL_FLAG_DELETE} WHERE id = #{id}
+        UPDATE tb_loop_img SET del_flag = #{DEL_FLAG_DELETE} WHERE id = #{id}
     </update>
 
 </mapper>

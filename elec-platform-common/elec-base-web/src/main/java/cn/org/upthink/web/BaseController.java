@@ -23,6 +23,7 @@ import javax.validation.ValidationException;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
 import java.util.Date;
+import java.util.function.Supplier;
 
 /**
  * 抽象的Controller类
@@ -185,6 +186,8 @@ public abstract class BaseController {
         HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return req;
     }
+
+
 
 
 }

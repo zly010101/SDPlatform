@@ -10,4 +10,6 @@ public class ElectricSaleMsApplication{
     public static void main(String[] args) {
         new SpringApplicationBuilder(ElectricSaleMsApplication.class).web(WebApplicationType.SERVLET).run(args);
     }
+
+
 }
