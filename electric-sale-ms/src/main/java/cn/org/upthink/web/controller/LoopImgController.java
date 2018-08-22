@@ -1,9 +1,8 @@
 package cn.org.upthink.controller;
 
-import cn.org.upthink.common.constant.BaseResponseCode;
 import cn.org.upthink.conver.Bean2VOConver;
 import cn.org.upthink.conver.DTO2BeanConver;
-import cn.org.upthink.model.ResponseStatus;
+import cn.org.upthink.model.ResponseCode;
 import cn.org.upthink.model.dto.LoopImgFormDTO;
 import cn.org.upthink.model.dto.LoopImgQueryDTO;
 import cn.org.upthink.model.type.LoopTypeEnum;
@@ -15,8 +14,6 @@ import cn.org.upthink.entity.LoopImg;
 import cn.org.upthink.service.LoopImgService;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -26,7 +23,6 @@ import io.swagger.annotations.ApiParam;
 //import cn.org.upthink.frame.modules.sys.utils.UserUtils;
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 //import org.apache.shiro.authz.annotation.RequiresUser;
-import org.apache.http.HttpStatus;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -34,10 +30,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 /**
@@ -139,17 +132,17 @@ public class LoopImgController extends BaseController {
     }
 
     private BaseResult<?> tryCatch(Supplier<BaseResult<?>> supplier){
-        try {
+        //try {
             return supplier.get();
-        }catch (NullPointerException | IllegalArgumentException |IllegalStateException e){
+        /*}catch (NullPointerException | IllegalArgumentException |IllegalStateException e){
             e.printStackTrace();
             logger.error("#####################" + e.getMessage()+"#######################");
-            return getBaseResultFail(null, ResponseStatus.INVALID_PARAM,e.getMessage());
+            return getBaseResultFail(null, ResponseCode.INVALID_PARAM,e.getMessage());
         }catch(Exception e) {
             e.printStackTrace();
             logger.error("#####################"+e.getMessage()+"#######################");
-            return getBaseResultFail(null,ResponseStatus.HANDLER_EXCEPTION, "处理失败");
-        }
+            return getBaseResultFail(null,ResponseCode.HANDLER_EXCEPTION, "处理失败");
+        }*/
     }
 
     private void checkLoopImgFormDTO(LoopImgFormDTO loopImgFormDTO){
