@@ -1,8 +1,7 @@
 package cn.org.upthink.controller;
 
-import cn.org.upthink.conver.Bean2VOConver;
-import cn.org.upthink.conver.DTO2BeanConver;
-import cn.org.upthink.model.ResponseCode;
+import cn.org.upthink.converter.Bean2VOConverter;
+import cn.org.upthink.converter.DTO2BeanConverter;
 import cn.org.upthink.model.dto.LoopImgFormDTO;
 import cn.org.upthink.model.dto.LoopImgQueryDTO;
 import cn.org.upthink.model.type.LoopTypeEnum;
@@ -54,7 +53,7 @@ public class LoopImgController extends BaseController {
 
             LoopImg loopImg = loopImgService.get(loopImgId);
             if(loopImg!=null){
-                return getBaseResultSuccess(Bean2VOConver.toLoopImgVo(loopImg), "有效对象");
+                return getBaseResultSuccess(Bean2VOConverter.toLoopImgVo(loopImg), "有效对象");
             }else{
                 return getBaseResultSuccess(null, "没有获取到对象");
             }
@@ -84,12 +83,12 @@ public class LoopImgController extends BaseController {
 
         return tryCatch(()->{
             checkLoopImgFormDTO(loopImgFormDTO);
-            final LoopImg loopImg = DTO2BeanConver.getLoopImg(loopImgFormDTO);
+            final LoopImg loopImg = DTO2BeanConverter.getLoopImg(loopImgFormDTO);
 
             loopImgService.save(loopImg);
 
 
-            return getBaseResultSuccess(Bean2VOConver.toLoopImgVo(loopImg), "保存LoopImg成功");
+            return getBaseResultSuccess(Bean2VOConverter.toLoopImgVo(loopImg), "保存LoopImg成功");
         });
     }
 
@@ -111,7 +110,7 @@ public class LoopImgController extends BaseController {
             BeanUtils.copyProperties(loopImgFormDTO,loopImg);
 
             loopImgService.save(loopImg);
-            return getBaseResultSuccess(Bean2VOConver.toLoopImgVo(loopImg), "保存LoopImg成功");
+            return getBaseResultSuccess(Bean2VOConverter.toLoopImgVo(loopImg), "保存LoopImg成功");
         });
     }
 
@@ -119,7 +118,7 @@ public class LoopImgController extends BaseController {
     @GetMapping(value = "/loopImg", produces = "application/json;charset=UTF-8")
     public BaseResult<?> listLoopImg(HttpServletRequest request, HttpServletResponse response, @ApiParam LoopImgQueryDTO loopImgQueryDTO) {
         return tryCatch(()->{
-            LoopImg loopImg = DTO2BeanConver.getLoopImg(loopImgQueryDTO);
+            LoopImg loopImg = DTO2BeanConverter.getLoopImg(loopImgQueryDTO);
 
             Page<LoopImg> page = loopImgService.findPage(new Page<LoopImg>(request, response), loopImg);
             if(page.getList().isEmpty()){
